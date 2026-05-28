@@ -1,5 +1,368 @@
-<!doctype html>
-<meta charset="utf-8">
-<title>自己紹介</title>
-<h1>自己紹介</h1>
-<p>授業で作成したページです。</p>
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --sub: #6b7280;
+      --accent: #2563eb;
+      --border: #dbe3ee;
+      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      padding: 72px 20px 56px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      max-width: 680px;
+      margin: 0 auto;
+      opacity: 0.95;
+      font-size: 1rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      list-style: none;
+      padding: 14px 12px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: 0.2s;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      background: #e8f0ff;
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 16px 60px;
+    }
+
+    section {
+      margin-bottom: 32px;
+      background: var(--card);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.7s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      color: var(--accent);
+    }
+
+    p {
+      color: var(--text);
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .skill-card {
+      background: #eef4ff;
+      padding: 16px;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 600;
+      color: #1d4ed8;
+    }
+
+    .works {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .work-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      transition: 0.2s;
+      background: #fafcff;
+    }
+
+    .work-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .work-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .tag-list {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.85rem;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 16px 40px;
+      color: var(--sub);
+      font-size: 0.9rem;
+    }
+
+    .top-button {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    .top-button.show {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 56px 16px 40px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 22px;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>My Portfolio</h1>
+    <p>
+      学習内容や制作物をまとめた自己紹介サイトです。<br>
+      個人情報は最小限にし、技術や取り組みを中心に掲載しています。
+    </p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#reflection">Reflection</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        情報技術やデータ分析に興味を持ち、Web開発やプログラミングの学習を進めています。
+        学校や個人学習を通じて、実際に手を動かしながら知識を深めています。
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+
+      <div class="skills">
+        <div class="skill-card">HTML</div>
+        <div class="skill-card">CSS</div>
+        <div class="skill-card">JavaScript</div>
+        <div class="skill-card">Python</div>
+        <div class="skill-card">SQL</div>
+        <div class="skill-card">Data Analysis</div>
+      </div>
+    </section>
+
+    <section id="works">
+      <h2>Works</h2>
+
+      <div class="works">
+
+        <div class="work-card">
+          <div class="work-title">ポートフォリオサイト</div>
+          <p>
+            HTML/CSS/JavaScript を使用して作成した静的Webサイト。
+            レスポンシブ対応やUI設計を意識して制作しました。
+          </p>
+
+          <div class="tag-list">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-title">データ分析演習</div>
+          <p>
+            Pythonを用いたデータ前処理や回帰分析を実施。
+            欠損値処理や可視化を通して分析手法を学習しました。
+          </p>
+
+          <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Machine Learning</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="reflection">
+      <h2>Reflection</h2>
+      <p>
+        制作や学習を通して、単にコードを書くのではなく、
+        「使いやすさ」や「読みやすさ」を意識することの重要性を学びました。
+        今後はWeb開発だけでなく、データ活用やシステム設計にも挑戦したいと考えています。
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 My Portfolio
+  </footer>
+
+  <button class="top-button" id="topButton">↑</button>
+
+  <script>
+    // スムーズスクロール
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // フェードイン表示
+    const sections = document.querySelectorAll('section');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // トップへ戻るボタン
+    const topButton = document.getElementById('topButton');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        topButton.classList.add('show');
+      } else {
+        topButton.classList.remove('show');
+      }
+    });
+
+    topButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+
+</body>
+</html>
+```
